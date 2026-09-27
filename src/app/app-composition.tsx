@@ -12,14 +12,20 @@ import { computeMongeGeometry } from "./monge-geometry";
 export const appComposition = composeToolcraftApp(appSchema, {
   scene: {
     canvasContent: <MongeCanvas />,
-    sceneBoundsProvider: () => [{ x: 0, y: 0, width: 1920, height: 1080 }],
+    sceneBoundsProvider: () => [
+      { x: -960, y: -540, width: 1920, height: 1080 },
+    ],
     rasterFrameRenderer: {
       baseFileName: "monge-theorem",
-      renderFrame: ({ context, state }) => {
+      renderFrame: ({ context, frame, state }) => {
         const parsed = getMongeConfigFromValues(
           state.values as Record<string, unknown>
         );
         const geometry = computeMongeGeometry(parsed.config);
+        context.save();
+        if (frame) {
+          context.translate(frame.x, frame.y);
+        }
         drawMongeSceneToCanvas(context, geometry, {
           circleStrokeWidth: parsed.circleStrokeWidth,
           circleFillOpacity: parsed.circleFillOpacity,
@@ -37,6 +43,7 @@ export const appComposition = composeToolcraftApp(appSchema, {
           labelColor: parsed.labelColor,
           scale: 1,
         });
+        context.restore();
       },
     },
   },
