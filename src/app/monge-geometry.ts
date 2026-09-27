@@ -121,9 +121,33 @@ export function getExternalBitangents(
   const t1b: Point2D = { x: c1.x + r1 * Math.cos(a2), y: c1.y + r1 * Math.sin(a2) };
   const t2b: Point2D = { x: c2.x + r2 * Math.cos(a2), y: c2.y + r2 * Math.sin(a2) };
 
+  const P = getExternalHomotheticCenter(c1, r1, c2, r2);
+
+  if (P) {
+    const extendLineFromP = (ptNear: Point2D, ptFar: Point2D): TangentLine => {
+      const vdx = ptFar.x - P.x;
+      const vdy = ptFar.y - P.y;
+      const vlen = Math.hypot(vdx, vdy);
+      const extendDist = 60;
+      const endPt: Point2D =
+        vlen > 0.001
+          ? {
+              x: ptFar.x + (vdx / vlen) * extendDist,
+              y: ptFar.y + (vdy / vlen) * extendDist,
+            }
+          : ptFar;
+      return { p1: P, p2: endPt };
+    };
+
+    const lineA = r1 >= r2 ? extendLineFromP(t2a, t1a) : extendLineFromP(t1a, t2a);
+    const lineB = r1 >= r2 ? extendLineFromP(t2b, t1b) : extendLineFromP(t1b, t2b);
+
+    return [lineA, lineB];
+  }
+
   return [
-    { p1: t1a, p2: t2a },
-    { p1: t1b, p2: t2b },
+    extendLine(t1a, t2a, 60),
+    extendLine(t1b, t2b, 60),
   ];
 }
 

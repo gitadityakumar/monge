@@ -1,1 +1,98 @@
-null
+{
+  "version": 2,
+  "appId": "monge",
+  "state": {
+    "values": {
+      "export.includeBackground": true,
+      "appearance.background": "#0D1117",
+      "canvas.workspaceBackground": "dots",
+      "canvas.aspectRatio": {
+        "height": 9,
+        "mode": "preset",
+        "value": "16:9",
+        "width": 16
+      },
+      "canvas.size.width": 1920,
+      "canvas.size.height": 1080,
+      "circles.strokeWidth": 3,
+      "circles.fillOpacity": 0.15,
+      "circles.color1": "#38BDF8",
+      "circles.color2": "#C084FC",
+      "circles.color3": "#FB7185",
+      "circles.radius1": 80,
+      "circles.radius2": 50,
+      "circles.radius3": 30,
+      "geometry.distanceScale": 1,
+      "geometry.layoutPreset": "triangle",
+      "lines.tangentStrokeWidth": 2.5,
+      "lines.mongeLineStrokeWidth": 2.5,
+      "lines.tangentColor": "#94A3B8",
+      "lines.mongeLineColor": "#F59E0B",
+      "lines.showMongeLine": true,
+      "lines.showExternalTangents": true,
+      "lines.showInternalTangents": false,
+      "lines.showCenterLines": true,
+      "annotations.showLabels": true,
+      "annotations.showPoints": true,
+      "annotations.fontSize": 17,
+      "annotations.labelColor": "#FBFCFE",
+      "export.image.format": "png",
+      "export.image.resolution": "4k"
+    },
+    "canvas": {
+      "offset": {
+        "x": -147.24996948242188,
+        "y": 43.8499755859375
+      },
+      "size": {
+        "height": 1080,
+        "unit": "px",
+        "width": 1920
+      },
+      "zoom": 25,
+      "mode": "finite"
+    },
+    "panels": {
+      "controls": {
+        "collapsedSections": {},
+        "offset": {
+          "x": 0,
+          "y": 0
+        },
+        "scrollTop": 0
+      },
+      "layers": {
+        "offset": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      "timeline": {
+        "offset": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      "toolbar": {
+        "offset": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    },
+    "timeline": {
+      "currentTimeSeconds": 0,
+      "durationSeconds": 8,
+      "expanded": false,
+      "isLooping": true,
+      "isPlaying": true,
+      "selectedKeyframeId": null,
+      "keyframeGroups": []
+    },
+    "layers": [],
+    "selectedLayerId": null,
+    "mediaAssets": []
+  },
+  "resources": [],
+  "theme": "dark"
+}

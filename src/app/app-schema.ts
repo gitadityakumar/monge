@@ -103,7 +103,7 @@ export const appSchema = defineToolcraft({
               },
               radius1: {
                 applicability: { mode: "always" },
-                defaultValue: 110,
+                defaultValue: 80,
                 label: "Radius A",
                 max: 250,
                 min: 20,
@@ -117,7 +117,7 @@ export const appSchema = defineToolcraft({
               },
               radius2: {
                 applicability: { mode: "always" },
-                defaultValue: 70,
+                defaultValue: 50,
                 label: "Radius B",
                 max: 250,
                 min: 20,
@@ -131,7 +131,7 @@ export const appSchema = defineToolcraft({
               },
               radius3: {
                 applicability: { mode: "always" },
-                defaultValue: 42,
+                defaultValue: 30,
                 label: "Radius C",
                 max: 250,
                 min: 20,

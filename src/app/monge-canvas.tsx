@@ -12,19 +12,19 @@ export const PRESET_POSITIONS: Record<
   { pos1: Point2D; pos2: Point2D; pos3: Point2D }
 > = {
   triangle: {
-    pos1: { x: 680, y: 440 },
-    pos2: { x: 1140, y: 380 },
-    pos3: { x: 920, y: 720 },
+    pos1: { x: 500, y: 320 },
+    pos2: { x: 860, y: 270 },
+    pos3: { x: 710, y: 520 },
   },
   ascending: {
-    pos1: { x: 500, y: 650 },
-    pos2: { x: 880, y: 480 },
-    pos3: { x: 1220, y: 360 },
+    pos1: { x: 520, y: 560 },
+    pos2: { x: 810, y: 440 },
+    pos3: { x: 1050, y: 340 },
   },
   offset: {
-    pos1: { x: 600, y: 360 },
-    pos2: { x: 1180, y: 520 },
-    pos3: { x: 820, y: 740 },
+    pos1: { x: 450, y: 280 },
+    pos2: { x: 850, y: 280 },
+    pos3: { x: 600, y: 500 },
   },
 };
 
@@ -51,9 +51,9 @@ export function getMongeConfigFromValues(
   const basePos = PRESET_POSITIONS[presetKey] || PRESET_POSITIONS.triangle;
 
   const distanceScale = Number(values["geometry.distanceScale"] ?? 1.0);
-  const radius1 = Number(values["circles.radius1"] ?? 110);
-  const radius2 = Number(values["circles.radius2"] ?? 70);
-  const radius3 = Number(values["circles.radius3"] ?? 42);
+  const radius1 = Number(values["circles.radius1"] ?? 80);
+  const radius2 = Number(values["circles.radius2"] ?? 50);
+  const radius3 = Number(values["circles.radius3"] ?? 30);
 
   const color1 = (values["circles.color1"] as string) || "#38BDF8";
   const color2 = (values["circles.color2"] as string) || "#C084FC";
