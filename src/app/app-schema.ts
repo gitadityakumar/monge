@@ -235,6 +235,23 @@ export const appSchema = defineToolcraft({
                 target: "lines.mongeLineColor",
                 type: "color",
               },
+              glowIntensity: {
+                applicability: { mode: "always" },
+                defaultValue: 12,
+                description:
+                  "Luminous glow blur radius for circles, tangents, and Monge theorem line.",
+                label: "Glow",
+                max: 30,
+                min: 0,
+                performanceReason:
+                  "Adjusts shadow blur glow radius for geometric elements",
+                performanceRole: "responsiveness",
+                sliderValueKind: "continuous",
+                step: 1,
+                target: "lines.glowIntensity",
+                type: "slider",
+                unit: "px",
+              },
               showMongeLine: {
                 applicability: { mode: "always" },
                 defaultValue: true,

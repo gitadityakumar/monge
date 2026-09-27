@@ -4,7 +4,7 @@
   "state": {
     "values": {
       "export.includeBackground": true,
-      "appearance.background": "#0D1117",
+      "appearance.background": "#0A3261",
       "canvas.workspaceBackground": "dots",
       "canvas.aspectRatio": {
         "height": 9,
@@ -16,33 +16,34 @@
       "canvas.size.height": 1080,
       "circles.strokeWidth": 3,
       "circles.fillOpacity": 0.15,
-      "circles.color1": "#38BDF8",
-      "circles.color2": "#C084FC",
-      "circles.color3": "#FB7185",
-      "circles.radius1": 80,
-      "circles.radius2": 50,
-      "circles.radius3": 30,
-      "geometry.distanceScale": 1,
+      "circles.color1": "#0497D7",
+      "circles.color2": "#0497D7",
+      "circles.color3": "#0497D7",
+      "circles.radius1": 75,
+      "circles.radius2": 52,
+      "circles.radius3": 32,
+      "geometry.distanceScale": 0.7,
       "geometry.layoutPreset": "triangle",
-      "lines.tangentStrokeWidth": 2.5,
-      "lines.mongeLineStrokeWidth": 2.5,
-      "lines.tangentColor": "#94A3B8",
+      "lines.tangentStrokeWidth": 1,
+      "lines.mongeLineStrokeWidth": 1.5,
+      "lines.tangentColor": "#182C49",
       "lines.mongeLineColor": "#F59E0B",
+      "lines.glowIntensity": 8,
       "lines.showMongeLine": true,
       "lines.showExternalTangents": true,
       "lines.showInternalTangents": false,
-      "lines.showCenterLines": true,
-      "annotations.showLabels": true,
-      "annotations.showPoints": true,
+      "lines.showCenterLines": false,
+      "annotations.showLabels": false,
+      "annotations.showPoints": false,
       "annotations.fontSize": 17,
       "annotations.labelColor": "#FBFCFE",
       "export.image.format": "png",
-      "export.image.resolution": "4k"
+      "export.image.resolution": "8k"
     },
     "canvas": {
       "offset": {
-        "x": -147.24996948242188,
-        "y": 43.8499755859375
+        "x": 0,
+        "y": 0
       },
       "size": {
         "height": 1080,
@@ -59,6 +60,7 @@
           "x": 0,
           "y": 0
         },
+        "collapsed": false,
         "scrollTop": 0
       },
       "layers": {

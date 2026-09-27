@@ -33,6 +33,7 @@ export const appComposition = composeToolcraftApp(appSchema, {
           mongeLineStrokeWidth: parsed.mongeLineStrokeWidth,
           tangentColor: parsed.tangentColor,
           mongeLineColor: parsed.mongeLineColor,
+          glowIntensity: parsed.glowIntensity,
           showMongeLine: parsed.showMongeLine,
           showExternalTangents: parsed.showExternalTangents,
           showInternalTangents: parsed.showInternalTangents,

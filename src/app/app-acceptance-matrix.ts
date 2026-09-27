@@ -335,6 +335,25 @@ export const appAcceptance: readonly ToolcraftComponentAcceptance[] = [
   },
   {
     automated: true,
+    automatedTestName: "glow slider adjusts halo radius for lines and circles",
+    browser: {
+      budget: "standard",
+      file: "e2e/app-browser-acceptance.spec.ts",
+      testName: "browser acceptance: glow slider adjusts halo radius",
+    },
+    componentType: "slider",
+    evidence: "product-output",
+    expectedObservable:
+      "Adjusting Glow slider expands or contracts the radiant bloom around circles, tangents, and theorem lines.",
+    fixture: "monge glow intensity",
+    id: "control.lines.glow-intensity",
+    interactionId: "glow-intensity",
+    kind: "control",
+    target: "lines.glowIntensity",
+    userAction: "Drag Glow slider to adjust shadow blur radius.",
+  },
+  {
+    automated: true,
     automatedTestName: "monge line switch toggles collinear line visibility",
     browser: {
       budget: "standard",

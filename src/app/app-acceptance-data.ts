@@ -122,6 +122,25 @@ export const appProductReadiness: ToolcraftProductReadiness = {
       surface: "panel",
       target: "lines.tangentColor",
     },
+    {
+      alternative: {
+        reason:
+          "Canvas gestures cannot intuitively control optical glow blur radius without obscuring geometric tangent lines.",
+        surface: "canvas",
+      },
+      capability: "precise-value-entry",
+      evidence: {
+        detail:
+          "User explicitly requested glow value control for lines, circles, and geometry.",
+        source: "user-request",
+      },
+      id: "glow-intensity",
+      reason:
+        "The controls panel slider provides precise numerical glow blur entry for diagram elements.",
+      selectionScope: { mode: "global" },
+      surface: "panel",
+      target: "lines.glowIntensity",
+    },
   ],
   mode: "product",
   productName: "Monge's Theorem Studio",
@@ -225,6 +244,7 @@ export const appControlSectionInventory: readonly ToolcraftControlSectionInvento
         "lines.mongeLineStrokeWidth",
         "lines.tangentColor",
         "lines.mongeLineColor",
+        "lines.glowIntensity",
         "lines.showMongeLine",
         "lines.showExternalTangents",
         "lines.showInternalTangents",

@@ -38,6 +38,7 @@ export function getMongeConfigFromValues(
   mongeLineStrokeWidth: number;
   tangentColor: string;
   mongeLineColor: string;
+  glowIntensity: number;
   showMongeLine: boolean;
   showExternalTangents: boolean;
   showInternalTangents: boolean;
@@ -80,6 +81,7 @@ export function getMongeConfigFromValues(
     mongeLineStrokeWidth: Number(values["lines.mongeLineStrokeWidth"] ?? 3.5),
     tangentColor: (values["lines.tangentColor"] as string) || "#94A3B8",
     mongeLineColor: (values["lines.mongeLineColor"] as string) || "#F59E0B",
+    glowIntensity: Number(values["lines.glowIntensity"] ?? 12),
     showMongeLine: values["lines.showMongeLine"] !== false,
     showExternalTangents: values["lines.showExternalTangents"] !== false,
     showInternalTangents: Boolean(values["lines.showInternalTangents"]),
@@ -104,6 +106,7 @@ export function drawMongeSceneToCanvas(
     mongeLineStrokeWidth: number;
     tangentColor: string;
     mongeLineColor: string;
+    glowIntensity: number;
     showMongeLine: boolean;
     showExternalTangents: boolean;
     showInternalTangents: boolean;
@@ -122,6 +125,7 @@ export function drawMongeSceneToCanvas(
     mongeLineStrokeWidth,
     tangentColor,
     mongeLineColor,
+    glowIntensity,
     showMongeLine,
     showExternalTangents,
     showInternalTangents,
@@ -141,6 +145,10 @@ export function drawMongeSceneToCanvas(
   // 1. Center connection lines (dashed)
   if (showCenterLines) {
     ctx.save();
+    if (glowIntensity > 0) {
+      ctx.shadowColor = "rgba(148, 163, 184, 0.5)";
+      ctx.shadowBlur = glowIntensity * 0.5;
+    }
     ctx.strokeStyle = "rgba(148, 163, 184, 0.4)";
     ctx.lineWidth = Math.max(1, tangentStrokeWidth * 0.75);
     ctx.setLineDash([6, 6]);
@@ -158,6 +166,10 @@ export function drawMongeSceneToCanvas(
   // 2. External Bitangents
   if (showExternalTangents) {
     ctx.save();
+    if (glowIntensity > 0) {
+      ctx.shadowColor = tangentColor;
+      ctx.shadowBlur = glowIntensity * 0.8;
+    }
     ctx.strokeStyle = tangentColor;
     ctx.lineWidth = tangentStrokeWidth;
 
@@ -179,6 +191,10 @@ export function drawMongeSceneToCanvas(
   // 3. Internal Bitangents
   if (showInternalTangents) {
     ctx.save();
+    if (glowIntensity > 0) {
+      ctx.shadowColor = "rgba(168, 85, 247, 0.8)";
+      ctx.shadowBlur = glowIntensity * 0.8;
+    }
     ctx.strokeStyle = "rgba(168, 85, 247, 0.65)";
     ctx.lineWidth = Math.max(1, tangentStrokeWidth * 0.9);
     ctx.setLineDash([4, 4]);
@@ -201,6 +217,10 @@ export function drawMongeSceneToCanvas(
   // 4. Monge's Collinear Line
   if (showMongeLine && geometry.mongeLine) {
     ctx.save();
+    if (glowIntensity > 0) {
+      ctx.shadowColor = mongeLineColor;
+      ctx.shadowBlur = glowIntensity * 1.5;
+    }
     ctx.strokeStyle = mongeLineColor;
     ctx.lineWidth = mongeLineStrokeWidth;
     ctx.lineCap = "round";
@@ -210,11 +230,13 @@ export function drawMongeSceneToCanvas(
     ctx.lineTo(geometry.mongeLine.p2.x, geometry.mongeLine.p2.y);
     ctx.stroke();
 
-    // Subtle outer glow effect
-    ctx.strokeStyle = mongeLineColor;
-    ctx.globalAlpha = 0.25;
-    ctx.lineWidth = mongeLineStrokeWidth * 2.5;
-    ctx.stroke();
+    // Outer glow halo
+    if (glowIntensity > 0) {
+      ctx.strokeStyle = mongeLineColor;
+      ctx.globalAlpha = 0.3;
+      ctx.lineWidth = mongeLineStrokeWidth * (1.5 + glowIntensity * 0.1);
+      ctx.stroke();
+    }
     ctx.restore();
   }
 
@@ -228,7 +250,11 @@ export function drawMongeSceneToCanvas(
     ctx.arc(circle.x, circle.y, circle.r, 0, Math.PI * 2);
     ctx.fill();
 
-    // Stroke
+    // Stroke with glow
+    if (glowIntensity > 0) {
+      ctx.shadowColor = circle.color;
+      ctx.shadowBlur = glowIntensity;
+    }
     ctx.globalAlpha = 1.0;
     ctx.strokeStyle = circle.color;
     ctx.lineWidth = circleStrokeWidth;
@@ -257,6 +283,10 @@ export function drawMongeSceneToCanvas(
     for (const item of extCenters) {
       if (!item.pt) continue;
       ctx.save();
+      if (glowIntensity > 0) {
+        ctx.shadowColor = mongeLineColor;
+        ctx.shadowBlur = glowIntensity;
+      }
       // Outer ring
       ctx.fillStyle = "#0F172A";
       ctx.strokeStyle = mongeLineColor;
@@ -386,6 +416,7 @@ export function MongeCanvas(): React.ReactElement {
       mongeLineStrokeWidth: parsed.mongeLineStrokeWidth,
       tangentColor: parsed.tangentColor,
       mongeLineColor: parsed.mongeLineColor,
+      glowIntensity: parsed.glowIntensity,
       showMongeLine: parsed.showMongeLine,
       showExternalTangents: parsed.showExternalTangents,
       showInternalTangents: parsed.showInternalTangents,

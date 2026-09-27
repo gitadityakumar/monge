@@ -12,7 +12,10 @@ describe("appSchema", () => {
   it("publishes the Monge theorem product contract", () => {
     expect(appSchema.canvas.draggable).toBe(true);
     expect(appSchema.canvas.enabled).toBe(true);
-    expect(appSchema.canvas.sizing).toEqual({ mode: "editable-output" });
+    expect(appSchema.canvas.sizing).toEqual({
+      defaultMode: "finite",
+      mode: "editable-output",
+    });
     expect(appSchema.panels.controls?.sections[1]?.title).toBe("Settings");
     expect(
       appSchema.panels.controls?.sections[0]?.controls.settingsTransfer,
