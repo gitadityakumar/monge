@@ -1,2 +1,10 @@
 allowBuilds:
   esbuild: true
+
+overrides:
+  "@vitest/mocker": ">=4.1.12"
+  "vitest": ">=4.1.12"
+  "tinypool": ">=2.1.2"
+  "seroval": ">=1.6.11"
+  "source-map-js": ">=1.2.2"
+  "vite": ">=8.3.3"
